@@ -17,4 +17,12 @@ stg_tags                 = {
 }
 
 # Storage Container Values
-container_name = "app-assets"
+container_name = "dev-cntnr"
+
+# Virtual Network Values
+vnet_name          = "dev-az-3-tire-vnet"
+vnet_address_space = ["10.10.0.0/16","172.0.0.0/16"]
+vnet_tags = {
+  Environment = "Dev"
+  Component   = "Networking"
+}

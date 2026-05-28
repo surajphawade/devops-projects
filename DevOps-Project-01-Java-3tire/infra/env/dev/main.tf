@@ -23,3 +23,13 @@ module "azurerm_storage_container" {
   container_name       = var.container_name
   storage_account_name = module.azurerm_storage_account.stg_account_name
 }
+
+# 4. Virtual Network Module
+module "azurerm_virtual_network" {
+  source              = "../../module/azurerm_virtual_network"
+  vnet_name           = var.vnet_name
+  rg_name              = module.azurerm_resource_group.rg_name
+  location            = module.azurerm_resource_group.location
+  address_space       = var.vnet_address_space
+  vnet_tags           = var.vnet_tags
+}
