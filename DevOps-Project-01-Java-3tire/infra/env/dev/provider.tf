@@ -1,7 +1,7 @@
 terraform {
-  required_providers {
+    required_providers {
     azurerm = {
-        source = "hasicorp/azaurerm"
+        source = "hashicorp/azurerm"
         version = "~> 4.0"
     }
   }
@@ -11,4 +11,12 @@ terraform {
 #     container_name = "value"
 #     key = "value"
 #   }
+}
+
+provider "azurerm" {
+  features {
+    
+  }
+  subscription_id = "2cd4b0da-b78f-45de-af90-bb7b78de22fc"
+  
 }
