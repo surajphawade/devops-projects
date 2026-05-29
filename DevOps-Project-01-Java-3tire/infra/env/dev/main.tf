@@ -26,10 +26,24 @@ module "azurerm_storage_container" {
 
 # 4. Virtual Network Module
 module "azurerm_virtual_network" {
+  for_each = var.vnets
   source        = "../../module/azurerm_virtual_network"
-  vnet_name     = var.vnet_name
+  vnet_name     = each.key
   rg_name       = module.azurerm_resource_group.rg_name
   location      = module.azurerm_resource_group.location
-  address_space = var.vnet_address_space
-  vnet_tags     = var.vnet_tags
+  address_space = each.value.vnet_address_space
+  vnet_tags     = each.value.vnet_tags
+}
+
+# 5. Subnet Module
+
+module "azurerm_subnet" {
+  for_each = var.snets
+  source = "../../module/azurerm_subnet"
+
+  subnet_name = each.key
+  rg_name =   module.azurerm_resource_group.rg_name
+  vnet_name = module.azurerm_virtual_network[each.value.vnet_name].vnet_name
+
+  address_prefixes = each.value.address_prefixes
 }

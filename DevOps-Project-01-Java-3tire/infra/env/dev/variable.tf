@@ -45,17 +45,19 @@ variable "container_name" {
 }
 
 # --- Virtual Network Variables ---
-variable "vnet_name" {
-  type        = string
-  description = "Name of the VNet"
+variable "vnets" {
 }
 
-variable "vnet_address_space" {
-  type        = list(string)
-  description = "Address space range for the dev VNet"
-}
+# variable "vnet_address_space" {
+#   type        = list(string)
+#   description = "Address space range for the dev VNet"
+# }
 
-variable "vnet_tags" {
-  type        = map(string)
-  description = "Tags for the virtual network"
-}
+# variable "vnet_tags" {
+#   type        = map(string)
+#   description = "Tags for the virtual network"
+# }
+
+# --- Subnet Variables ---
+
+variable "snets" {}
