@@ -46,20 +46,9 @@ variable "container_name" {
 
 # --- Virtual Network Variables ---
 
-variable "vnets" {
-  type = map(object({
-    vnet_address_space = list(string)
-    vnet_tags          = map(string)
-  }))
-  description = "Map of virtual networks configuration including their address spaces and specific tags."
-}
+variable "vnets" {}
+
 
 # --- Subnet Variables ---
 
-variable "snets" {
-  type = map(object({
-    address_prefixes = list(string)
-    vnet_name        = string
-  }))
-  description = "Map of subnets configuration containing names, CIDR prefixes, and their targeted VNet map keys."
-}
+variable "snets" {}
