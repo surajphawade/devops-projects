@@ -47,3 +47,25 @@ module "azurerm_subnet" {
 
   address_prefixes = each.value.address_prefixes
 }
+
+# 6. Public Ip  Module
+
+module "azurerm_public_ip" {
+  source = "../../module/azurerm_public_ip"
+
+  ip_name = var.ip_name
+  rg_name = module.azurerm_resource_group.rg_name
+  location = module.azurerm_resource_group.location
+}
+
+# 6. Bastion Host  Module
+
+module "azurerm_bastion_host" {
+  
+  source = "../../module/azurerm_bastion_host"
+  bs_name = "Hub_bs"
+  location = module.azurerm_resource_group.location
+  rg_name = module.azurerm_resource_group.rg_name
+  snet_id = module.azurerm_subnet["bs_snet"].subnet_id
+  pip_id = module.azurerm_public_ip.pip_id
+}

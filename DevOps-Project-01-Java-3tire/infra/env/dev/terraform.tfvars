@@ -74,3 +74,7 @@ snets = {
   }
   
 }
+
+# PIP Values
+
+ip_name = "bastionPublicIp"

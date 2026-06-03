@@ -52,3 +52,8 @@ variable "vnets" {}
 # --- Subnet Variables ---
 
 variable "snets" {}
+
+# --- Public Ip Variables ---
+variable "ip_name" {}
+
+# --- Bastion Host Variables ---
